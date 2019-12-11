@@ -6,6 +6,9 @@ gradle-or-gradlew() {
 	if [ -f ./gradlew ] ; then
 		echo "executing gradlew instead of gradle";
 		./gradlew "$@";
+	elif [ -f "$GRADLE_HOME"/bin/gradle ]; then
+		echo "executing gradle latest ($GRADLE_HOME/bin/gradle)";
+		"$GRADLE_HOME"/bin/gradle "$@";
 	else
 		gradle "$@";
 	fi
